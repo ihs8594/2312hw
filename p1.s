@@ -26,6 +26,8 @@ main:
     CMP R3, #'M'
     BLEQ _max
     MOV R1,R0
+    BL _result
+    BL main
    
 _exit:  
     MOV R7, #4             
@@ -57,7 +59,12 @@ _printf:
     LDR R0, =printf_str     
     BL printf              
     MOV PC, R4              
-    
+
+_result:
+    MOV R4, LR              
+    LDR R0, =result_str     
+    BL printf              
+    MOV PC, R4    
     
 _scanf:
     PUSH {LR}                
@@ -102,6 +109,7 @@ _max:
 format_str:     .asciz      "%d"
 prompt_str:     .asciz      "Type a number and press enter: "
 printf_str:     .asciz      "The number entered was: %d\n"
+result_str:     .asciz      "The result is: %d\n"
 operation_str:  .asciz      "Choose an operation {+,-,*,M}: "
-op_char:        .ascii      " "
+op_char:        .asciz      " "
 exit_str:       .ascii      "Terminating program.\n"
