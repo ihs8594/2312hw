@@ -11,6 +11,7 @@ main:
     MOV R2, R0
     BL  _printf             @ branch to print procedure with return
     BL  _add
+    MOV R1, R0
     BL  _printf
     B   _exit               @ branch to exit procedure with no return
    
