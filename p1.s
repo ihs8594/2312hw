@@ -68,9 +68,8 @@ _opscanf:
     POP {PC}                 @ return
 
 _add:
-    PUSH {LR}
     ADD R0, R1, R2
-	POP {PC}
+    MOV	PC, LR
 
 
 .data
