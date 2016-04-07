@@ -27,6 +27,14 @@ _prompt:
     LDR R1, =prompt_str     @ string at label prompt_str:
     SWI 0                   @ execute syscall
     MOV PC, LR              @ return
+    
+_opprompt:
+    MOV R7, #4              @ write syscall, 4
+    MOV R0, #1              @ output stream to monitor, 1
+    MOV R2, #31             @ print string length
+    LDR R1, =operation_str  @ string at label prompt_str:
+    SWI 0                   @ execute syscall
+    MOV PC, LR              @ return
        
 _printf:
     MOV R4, LR              @ store LR since printf call overwrites
@@ -49,4 +57,5 @@ _scanf:
 format_str:     .asciz      "%d"
 prompt_str:     .asciz      "Type a number and press enter: "
 printf_str:     .asciz      "The number entered was: %d\n"
+operation_str:  .asciz      "Type one of these {+,-,*,M} operations in: %s"
 exit_str:       .ascii      "Terminating program.\n"
