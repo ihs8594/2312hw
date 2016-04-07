@@ -4,11 +4,11 @@
 main:
     BL  _prompt             @ branch to prompt procedure with return
     BL  _scanf              @ branch to scanf procedure with return
-    MOV R1, #5              @ move return value R0 to argument register R1
+    MOV R1, R0              @ move return value R0 to argument register R1
     BL  _printf
     BL  _prompt
-    BL  _scanf
-    MOV R2, #10
+    BL  _scanf2
+    MOV R2, R0
     BL  _printf2             @ branch to print procedure with return
     BL  _add
     MOV R1, R0
@@ -63,6 +63,16 @@ _scanf:
     LDR R0, [SP]            @ load value at SP into R0
     ADD SP, SP, #4          @ restore the stack pointer
     POP {PC}                 @ return
+ 
+_scanf2:
+    PUSH {LR}                @ store LR since scanf call overwrites
+    SUB SP, SP, #4          @ make room on stack
+    LDR R0, =format_str     @ R0 contains address of format string
+    MOV R2, SP              @ move SP to R1 to store entry on stack
+    BL scanf                @ call scanf
+    LDR R0, [SP]            @ load value at SP into R0
+    ADD SP, SP, #4          @ restore the stack pointer
+    POP {PC}    
     
 _opscanf:
     PUSH {LR}                @ store LR since scanf call overwrites
