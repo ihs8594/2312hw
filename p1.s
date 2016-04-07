@@ -4,11 +4,11 @@
 main:
     BL  _prompt             @ branch to prompt procedure with return
     BL  _scanf              @ branch to scanf procedure with return
-    MOV R1, R0              @ move return value R0 to argument register R1
+    MOV R1, #5              @ move return value R0 to argument register R1
     BL  _printf
     BL  _prompt
     BL  _scanf
-    MOV R2, R0
+    MOV R2, #10
     BL  _printf2             @ branch to print procedure with return
     BL  _add
     MOV R1, R0
