@@ -8,7 +8,7 @@ main:
     BL  _printf
     BL  _prompt
     BL  _scanf
-    MOV R3, R0
+    MOV R2, R0
     BL  _printf2             @ branch to print procedure with return
     BL  _add
     MOV R1, R0
@@ -43,7 +43,6 @@ _opprompt:
 _printf:
     MOV R4, LR              @ store LR since printf call overwrites
     LDR R0, =printf_str     @ R0 contains formatted string address
-    MOV R1, R1              @ R1 contains printf argument (redundant line)
     BL printf               @ call printf
     MOV PC, R4              @ return
     
@@ -75,7 +74,7 @@ _opscanf:
     POP {PC}                 @ return
 
 _add:
-    ADD R0, R1, R3
+    ADD R0, R1, R2
     MOV	PC, LR
 
 
