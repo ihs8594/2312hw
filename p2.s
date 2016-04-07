@@ -77,6 +77,6 @@ _exit:
     SWI 0               @ execute syscall
 
 .data
-read_char:      .ascii      " "
+read_char:      .ascii      "%c"
 format_str:     .asciz      "%d"
 print_str:  .asciz "The Result is : %d\n"
