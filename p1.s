@@ -8,11 +8,11 @@ main:
     BL  _printf
     BL  _opprompt
     BL  _opscanf
-    MOV R3, R0
+    MOV R1, R0
     BL _printf
     BL  _prompt
     BL  _scanf
-    MOV R2, R0
+    MOV R1, R0
     BL  _printf             @ branch to print procedure with return
     B   _exit               @ branch to exit procedure with no return
    
@@ -72,6 +72,6 @@ _opscanf:
 format_str:     .asciz      "%d"
 prompt_str:     .asciz      "Type a number and press enter: "
 printf_str:     .asciz      "The number entered was: %d\n"
-operation_str:  .asciz      "Type one of these {+,-,*,M} operations in: "
+operation_str:  .asciz      "Choose an operation {+,-,*,M}: "
 opformat_str:   .asciz      "%s"
 exit_str:       .ascii      "Terminating program.\n"
