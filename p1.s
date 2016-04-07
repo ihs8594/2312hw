@@ -8,7 +8,7 @@ main:
     BL  _printf
     BL  _opprompt
     BL  _opscanf
-    MOV R1, R0
+    MOV R2, R0
     BL _printf
     BL  _prompt
     BL  _scanf
@@ -67,6 +67,12 @@ _opscanf:
     LDR R0, [SP]            @ load value at SP into R0
     ADD SP, SP, #4          @ restore the stack pointer
     POP {PC}                 @ return
+
+_add:
+    PUSH {LR}
+    ADD R0, R1, R2
+	POP {PC}
+
 
 .data
 format_str:     .asciz      "%d"
