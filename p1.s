@@ -6,14 +6,12 @@ main:
     BL  _scanf              @ branch to scanf procedure with return
     MOV R1, R0              @ move return value R0 to argument register R1
     BL  _printf
-    BL  _opprompt
-    BL  _opscanf
-    MOV R2, R0
-    BL _printf
     BL  _prompt
     BL  _scanf
-    MOV R1, R0
+    MOV R2, R0
     BL  _printf             @ branch to print procedure with return
+    BL  _add
+    BL  _printf
     B   _exit               @ branch to exit procedure with no return
    
 _exit:  
