@@ -3,11 +3,12 @@
     
     main:
     BL _scanf
-    MOV R1, R0
+    MOV R4, R0
     BL _scanf
-    MOV R0, R0
+    MOV R5, R0
     BL _count_partitions
     MOV R1, R0
+    MOV R2, R0
     BL _printf
     
     
@@ -15,24 +16,22 @@
     
     _count_partitions:
     PUSH {LR}
-    CMP R0, #0
+    
+    CMP R4, #0
     MOVEQ R0, #1
     POPEQ {PC}
     
-    CMP R0, #0
+    CMP R4, #0
     MOVLT R0, #0
     POPLT {PC}
     
-    CMP R1, #0
+    CMP R5, #0
     MOVEQ R0, #0
     POPEQ {PC}
     
     PUSH {R4}
     PUSH {R5}
-    MOV R4, R0
-    MOV R5, R1
     SUB R0, R4, R5
-    
     BL _count_partitions
      
     SUB R1, R5, #1
@@ -67,6 +66,5 @@
     
     
     .data
-    prompt_str:     .asciz    "Enter a positive number: "
     format_str:     .asciz    "%d"
-    printf_str:     .asciz    "There are %d "
+    printf_str:     .asciz    "There are %d partitions of %d using integers up to %d"
