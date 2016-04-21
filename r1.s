@@ -39,7 +39,7 @@
     MOV R5, R1
     MOV R0, R4
     BL _count_partitions
-    BL _printf 
+    
     ADD R0, R0, R5
     POP {R4}
     POP {R5}
