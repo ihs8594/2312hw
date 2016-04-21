@@ -3,9 +3,9 @@
     
     main:
     BL _scanf
-    MOV R4, R0
+    MOV R1, R0
     BL _scanf
-    MOV R5, R0
+    MOV R0, R0
     BL _count_partitions
     MOV R1, R0
     BL _printf
@@ -32,7 +32,7 @@
     MOV R4, R0
     MOV R5, R1
     SUB R0, R4, R5
-     BL _printf
+    
     BL _count_partitions
   
     SUB R1, R5, #1
