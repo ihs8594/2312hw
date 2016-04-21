@@ -8,7 +8,8 @@
     MOV R5, R0
     BL _count_partitions
     MOV R1, R0
-    MOV R2, R0
+    MOV R2, R4
+    MOV R3, R5
     BL _printf
     
     
