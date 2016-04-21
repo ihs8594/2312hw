@@ -34,7 +34,7 @@
     SUB R0, R4, R5
     
     BL _count_partitions
-  
+    BL _printf  
     SUB R1, R5, #1
     MOV R5, #1
     MOV R0, R4
