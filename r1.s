@@ -7,6 +7,8 @@
     BL _scanf
     MOV R5, R0
     BL _count_partitions
+    MOV R1, R0
+    BL _printf
     
     
     
@@ -55,7 +57,8 @@
     
     _printf:
     MOV R4, LR              
-    LDR R0, =printf_str     
+    LDR R0, =printf_str 
+    @MOV R1, R1
     BL printf              
     MOV PC, R4
     
@@ -65,4 +68,4 @@
     .data
     prompt_str:     .asciz    "Enter a positive number: "
     format_str:     .asciz    "%d"
-    printf_str:     .asciz    "There are %d partitions of %d using integers up to %d"
+    printf_str:     .asciz    "There are %d "
