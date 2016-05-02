@@ -78,7 +78,7 @@ _readloop:
     LSL R2, R0, #2          
     ADD R2, R1, R2          
     LDR R1, [R2]  
-    LDR R3, =b 
+    LDR R3, =array_b 
     LSL R4, R0, #2 
     ADD R4, R3, R4 
     LDR R3, [R4]
