@@ -13,8 +13,8 @@ main:
 _generate:
     CMP R0, #20            
     BEQ writedone       
-    LDR R1, =array_a            
-    LDR R2, =array_b 
+    LDR R1, =a            
+    LDR R2, =b 
     LSL R3, R0, #2     
     ADD R3, R1, R3         
     ADD R7, R4, R0         
@@ -40,7 +40,7 @@ writedone:
     B _ArrLoop
 
 _ArrLoop: 
-    LDR R1, =array_b 
+    LDR R1, =b 
     CMP R0, #20 
     BEQ ArrDone 
     LSL R2, R0, #2 
@@ -74,11 +74,11 @@ _sortAscending:
 _readloop:
     CMP R0, #20            
     BEQ readdone          
-    LDR R1, =array_a    
+    LDR R1, =a    
     LSL R2, R0, #2          
     ADD R2, R1, R2          
     LDR R1, [R2]  
-    LDR R3, =array_b 
+    LDR R3, =b 
     LSL R4, R0, #2 
     ADD R4, R3, R4 
     LDR R3, [R4]
@@ -138,8 +138,8 @@ _exit:
 .data
 
 .balign 4
-array_a:        .skip       80
-array_b:        .skip       80
+a:        .skip       80
+b:        .skip       80
 format_str:     .asciz      "%d"
 prompt_str:     .asciz      "Type an positive integer: "
 printf_str:     .asciz      "array_a[%d] = %d, array_b = %d\n "
