@@ -23,12 +23,12 @@ _generate:
     ADD R5, R2, R5
     STR R7, [R5] 
     ADD R0, R0, #1 
-    LSL R4, R0, #2      
-    ADD R4, R1, R4       
+    LSL R10, R0, #2      
+    ADD R10, R1, R10       
     ADD R8, R7, #1         
     ADD R9, R8, R8 
     SUB R8, R8, R9
-    STR R8, [R4] 
+    STR R8, [R10] 
     LSL R6, R0, #2 
     ADD R6, R2, R6
     STR R8, [R6]
@@ -79,19 +79,19 @@ _readloop:
     ADD R2, R1, R2          
     LDR R1, [R2]  
     LDR R3, =b 
-    LSL R4, R0, #2 
-    ADD R4, R3, R4 
-    LDR R3, [R4]
+    LSL R10, R0, #2 
+    ADD R10, R3, R10 
+    LDR R3, [R10]
     PUSH {R0}              
     PUSH {R1}             
     PUSH {R2}             
     PUSH {R3} 
-    PUSH {R4} 
+    PUSH {R10} 
     MOV R3, R3
     MOV R2, R1     
     MOV R1, R0        
     BL  _printf           
-    POP {R4} 
+    POP {R10} 
     POP {R3}
     POP {R2}              
     POP {R1}               
