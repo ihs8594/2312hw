@@ -141,6 +141,6 @@ _exit:
 a:        .skip       80
 b:        .skip       80
 format_str:     .asciz      "%d"
-prompt_str:     .asciz      "Type an positive integer: "
+prompt_str:     .asciz      "Type an positive integer:     "
 printf_str:     .asciz      "array_a[%d] = %d, array_b = %d\n "
 exit_str:       .ascii      "Terminating program.\n"
