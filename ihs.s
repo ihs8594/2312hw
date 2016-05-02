@@ -40,7 +40,7 @@ writedone:
     B _ArrLoop
 
 _ArrLoop: 
-    LDR R1, =b 
+    LDR R1, =array_b 
     CMP R0, #20 
     BEQ ArrDone 
     LSL R2, R0, #2 
@@ -64,7 +64,7 @@ _sortAscending:
     STRGT R7, [R2] 
     STRGT R8, [R5] 
     
-    ADD R3, R3, #1 @
+    ADD R3, R3, #1 
     
     CMP R3, #20 
     BLT _sortAscending 
