@@ -38,6 +38,8 @@ _generate:
     LSL R4, R0, #2          @multiply previous index(i)*4 to get i+1 array offset
     ADD R4, R1, R4          @R3 now has i+1 element address
     ADD R8, R7, #1           @R8 has (n+i+1)
+    ADD R9, R8, R8 
+    SUB R8, R8, R9
     STR R8, [R4]            @store -(n+i+1) to a[i+1]
     
     LSL R6, R0, #2 
@@ -48,38 +50,40 @@ _generate:
 
 writedone:
     MOV R0, #0              @ initialze index variable
-    BL _ArrayLoop 
+    B _ArrayLoop
 
 _ArrayLoop: 
-    CMP R0, #20 
-    BEQ ArrayDone
     LDR R1, =b 
+    CMP R0, #20 
+    BEQ ArrayDone 
     LSL R2, R0, #2 
     ADD R2, R1, R2 
-    BL _sort
+    ADD R3, R0, #1 
+    BL _sortAscending  
     
-_iterate:   
-    ADD R0, R0, #1 
-    BL _ArrayLoop
 
 ArrayDone: 
     MOV R0, #0 
-    BL _readloop
+    B _readloop
 
-_sort: 
-    ADD R3, R0, #1 
-    CMP R3, #20 
-    BEQ _iterate 
+_sortAscending:  
     LSL R5, R3, #2 
     ADD R5, R1, R5 
     LDR R6, [R2] 
     LDR R7, [R5] 
+   
     CMP R6, R7 
+    
     LDRGT R8, [R2] 
     STRGT R7, [R2] 
     STRGT R8, [R5] 
-    ADD R3, R3, #1 
-    B _sort 
+    
+    ADD R3, R3, #1 @
+    
+    CMP R3, #20 
+    BLT _sortAscending 
+    ADD R0, R0, #1 
+    B _ArrayLoop   
     
 _readloop:
     CMP R0, #20            @ check to see if we are done iterating
