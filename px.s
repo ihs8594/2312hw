@@ -15,12 +15,12 @@ _generate:
     BEQ writedone
     LDR R1, =a            
     LDR R2, =b 
-    LSL R3, R0, #2     
+    LSL R3, R8, #2     
     ADD R3, R1, R3
     ADD R7, R4, #0
             
     STR R7, [R3] 
-    LSL R5, R0, #2 
+    LSL R5, R8, #2 
     ADD R5, R2, R5
     STR R7, [R5]
     
