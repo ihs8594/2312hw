@@ -74,6 +74,9 @@ _readloop:
     MOVEQ R1, R9
     BLEQ _printfmin
     MOVEQ R1, R3
+    BLEQ _printfmax
+    MOVEQ R1, R11
+    BLEQ _printfsum
     BEQ readdone          
     LDR R1, =a    
     LSL R2, R0, #2          
@@ -121,6 +124,12 @@ _printfmax:
     BL printf               
     POP {PC}
 
+_printfsum:
+    PUSH {LR}              
+    LDR R0, =printf_sum    
+    BL printf               
+    POP {PC}
+    
 _scanf:
     PUSH {LR}             
     SUB SP, SP, #4         
