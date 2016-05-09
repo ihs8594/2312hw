@@ -26,7 +26,7 @@ _generate:
     ADD R0, R0, #1
     BL _scanf
     MOV R4, R0
-    BL
+    BL _generate
    
 writedone:
     MOV R0, #0              
