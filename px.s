@@ -90,7 +90,7 @@ _readloop:
     CMP R0, #0
     MOVEQ R9, R3
     CMP R0, #9
-    MOVEQ R12, R3
+    MOVEQ R12, R10
     PUSH {R0}              
     PUSH {R1}             
     PUSH {R2}
