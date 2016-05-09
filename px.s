@@ -63,7 +63,7 @@ _sortAscending:
     ADD R3, R3, #1 
     
     CMP R3, #10 
-    MOVEQ R12, R3
+    MOVEQ R9, R3
     BLT _sortAscending 
     ADD R0, R0, #1 
     B _ArrLoop
@@ -72,11 +72,11 @@ _sortAscending:
 
 _readloop:
     CMP R0, #10
-    MOVEQ R1, R12
-    BLEQ _printfmax
-    MOVEQ R1, R9
-    BLEQ _printfmin
     
+    MOVEQ R1, R12
+    BLEQ _printfmin
+    MOVEQ R1, R9
+    BLEQ _printfmax
     MOVEQ R1, R11
     BLEQ _printfsum
     BEQ readdone          
@@ -90,7 +90,7 @@ _readloop:
     ADD R10, R3, R10 
     LDR R3, [R10]
     CMP R0, #0
-    MOVEQ R9, R3
+    MOVEQ R12, R3
     
     PUSH {R0}              
     PUSH {R1}             
