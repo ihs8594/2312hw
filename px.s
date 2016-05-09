@@ -46,8 +46,7 @@ main:
     BL writedone
     
 _generate:
-    CMP R0, #20            
-    BEQ writedone       
+         
     LDR R1, =a            
     LDR R2, =b 
     LSL R3, R0, #2     
@@ -58,7 +57,9 @@ _generate:
     ADD R5, R2, R5
     STR R3, [R5] 
    
-
+writedone:
+    MOV R0, #0              
+    B _ArrLoop
 
 
 _ArrLoop: 
@@ -123,6 +124,8 @@ _readloop:
     ADD R0, R0, #1        
     B   _readloop
 
+readdone:
+    B _exit 
 
 _printf:
     PUSH {LR}              
