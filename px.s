@@ -63,6 +63,7 @@ _sortAscending:
     ADD R3, R3, #1 
     
     CMP R3, #10 
+    MOVEQ R12, R3
     BLT _sortAscending 
     ADD R0, R0, #1 
     B _ArrLoop
@@ -105,8 +106,7 @@ _readloop:
     POP {R1}               
     POP {R0}                 
     ADD R0, R0, #1 
-    CMP R0, #10
-    MOVEQ R12, R3
+    
     B   _readloop
 
 readdone:
