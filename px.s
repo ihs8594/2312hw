@@ -4,6 +4,7 @@
 main: 
     BL _prompt          
     MOV R0, #0 
+    MOV R11, #0
     MOV R8, #0
     BL _generate
     
@@ -22,7 +23,7 @@ _generate:
     LSL R5, R8, #2 
     ADD R5, R2, R5
     STR R7, [R5]
-    
+    ADD R11, R11, R4
     ADD R8, R8, #1
     CMP R8, #10
     BEQ writedone
@@ -84,9 +85,9 @@ _readloop:
     PUSH {R2}             
     PUSH {R3} 
     PUSH {R10} 
-    MOV R3, R3
+    MOV R1, R3
     MOV R2, R1     
-    MOV R1, R0        
+    MOV R3, R0        
     BL  _printf           
     POP {R10} 
     POP {R3}
