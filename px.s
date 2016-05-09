@@ -165,7 +165,7 @@ a:        .skip       40
 b:        .skip       40
 format_str:     .asciz      "%d"
 prompt_str:     .asciz      "Type in 10 integers:"
-printf_str:     .asciz      "array_a[%d] = %d, array_b = %d\n "
+printf_str:     .asciz      "array_a[%d] = %d\n "
 printf_max:     .asciz      "maximum = %d\n "
 printf_min:     .asciz      "minimum = %d\n "
 printf_sum:     .asciz      "sum = %d\n "
