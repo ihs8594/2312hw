@@ -2,17 +2,17 @@
 .func main
    
 main: 
-              
+    BL _prompt          
     MOV R0, #0 
     MOV R8, #0
     BL _generate
     
     
 _generate:
-    BL _prompt
-    BL _scanf
+    
     MOV R4, R0
     CMP R8, #10
+    BL _scanf
     BEQ writedone
     LDR R1, =a            
     LDR R2, =b 
