@@ -73,7 +73,7 @@ _readloop:
     CMP R0, #10
     MOVEQ R1, R9
     BLEQ _printfmin
-    MOVEQ R1, R11
+    MOVEQ R1, R3
     BLEQ _printfmax
     MOVEQ R1, R11
     BLEQ _printfsum
