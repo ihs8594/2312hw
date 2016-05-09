@@ -50,12 +50,13 @@ _generate:
     LDR R1, =a            
     LDR R2, =b 
     LSL R3, R0, #2     
-    ADD R3, R1, R3         
+    ADD R3, R1, R3
+    ADD R7, R4, #0
             
-    STR R3, [R3] 
+    STR R7, [R3] 
     LSL R5, R0, #2 
     ADD R5, R2, R5
-    STR R3, [R5] 
+    STR R7, [R5] 
    
 writedone:
     MOV R0, #0              
