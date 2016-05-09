@@ -24,7 +24,7 @@ _generate:
     STR R7, [R5]
     
     ADD R8, R8, #1
-    CMP R8, #9
+    CMP R8, #10
     BEQ writedone
     
     B _generate
