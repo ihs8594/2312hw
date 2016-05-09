@@ -7,46 +7,11 @@ main:
     MOV R4, R0           
     MOV R0, #0             
     BL _generate
-    BL _scanf
-    MOV R4, R0           
-    MOV R0, #0             
-    BL _generate
-    BL _scanf
-    MOV R4, R0           
-    MOV R0, #0             
-    BL _generate
-    BL _scanf
-    MOV R4, R0           
-    MOV R0, #0             
-    BL _generate
-    BL _scanf
-    MOV R4, R0           
-    MOV R0, #0             
-    BL _generate
-    BL _scanf
-    MOV R4, R0           
-    MOV R0, #0             
-    BL _generate
-    BL _scanf
-    MOV R4, R0           
-    MOV R0, #0             
-    BL _generate
-    BL _scanf
-    MOV R4, R0           
-    MOV R0, #0             
-    BL _generate
-    BL _scanf
-    MOV R4, R0           
-    MOV R0, #0             
-    BL _generate
-    BL _scanf
-    MOV R4, R0           
-    MOV R0, #0             
-    BL _generate
-    B writedone
+    
     
 _generate:
-         
+    CMP R0, #10
+    BEQ writedone
     LDR R1, =a            
     LDR R2, =b 
     LSL R3, R0, #2     
@@ -56,7 +21,12 @@ _generate:
     STR R7, [R3] 
     LSL R5, R0, #2 
     ADD R5, R2, R5
-    STR R7, [R5] 
+    STR R7, [R5]
+    
+    ADD R0, R0, #1
+    BL _scanf
+    MOV R4, R0
+    BL
    
 writedone:
     MOV R0, #0              
@@ -147,7 +117,7 @@ _scanf:
 _prompt:
     MOV R7, #4             
     MOV R0, #1             
-    MOV R2, #31           
+    MOV R2, #21           
     LDR R1, =prompt_str     
     SWI 0                
     MOV PC, LR             
@@ -168,6 +138,6 @@ _exit:
 a:        .skip       40
 b:        .skip       40
 format_str:     .asciz      "%d"
-prompt_str:     .asciz      "Type in 10 integers: "
+prompt_str:     .asciz      "Type in 10 integers:"
 printf_str:     .asciz      "array_a[%d] = %d, array_b = %d\n "
 exit_str:       .ascii      "Terminating program.\n"
