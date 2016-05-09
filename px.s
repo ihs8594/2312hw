@@ -24,9 +24,11 @@ _generate:
     STR R7, [R5]
     
     ADD R0, R0, #1
+    BL _prompt
     BL _scanf
     MOV R4, R0
-    BL _generate
+    
+    B _generate
    
 writedone:
     MOV R0, #0              
