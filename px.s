@@ -9,11 +9,10 @@ main:
     
     
 _generate:
-    
-    MOV R4, R0
-    CMP R8, #10
-    BEQ writedone
     BL _scanf
+    MOV R4, R0
+    CMP R8, #9
+    BEQ writedone
     LDR R1, =a            
     LDR R2, =b 
     LSL R3, R8, #2     
