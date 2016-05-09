@@ -90,15 +90,13 @@ _readloop:
     CMP R0, #0
     MOVEQ R9, R3
     CMP R0, #9
-    MOVEQ R12, R10
+    MOVEQ R12, R3
     PUSH {R0}              
     PUSH {R1}             
     PUSH {R2}
-    PUSH {R10} 
     MOV R2, R1     
     MOV R1, R0        
-    BL  _printf           
-    POP {R10} 
+    BL  _printf 
     POP {R2}              
     POP {R1}               
     POP {R0}                
