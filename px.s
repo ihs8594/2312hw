@@ -5,12 +5,13 @@ main:
     BL _prompt
     BL _scanf
     MOV R4, R0           
-    MOV R0, #0             
+    MOV R0, #0 
+    MOV R8, #0
     BL _generate
     
     
 _generate:
-    CMP R0, #10
+    CMP R8, #10
     BEQ writedone
     LDR R1, =a            
     LDR R2, =b 
@@ -23,7 +24,7 @@ _generate:
     ADD R5, R2, R5
     STR R7, [R5]
     
-    ADD R0, R0, #1
+    ADD R8, R8, #1
     BL _prompt
     BL _scanf
     MOV R4, R0
