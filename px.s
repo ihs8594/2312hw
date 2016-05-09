@@ -2,15 +2,16 @@
 .func main
    
 main: 
-    BL _prompt
-    BL _scanf
-    MOV R4, R0           
+              
     MOV R0, #0 
     MOV R8, #0
     BL _generate
     
     
 _generate:
+    BL _prompt
+    BL _scanf
+    MOV R4, R0
     CMP R8, #10
     BEQ writedone
     LDR R1, =a            
@@ -26,8 +27,6 @@ _generate:
     
     ADD R8, R8, #1
 
-    BL _scanf
-    MOV R4, R0
     
     B _generate
    
