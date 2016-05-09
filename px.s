@@ -11,7 +11,7 @@ main:
     
     
 _generate:
-    CMP R8, #10
+    CMP R8, #9
     BEQ writedone
     LDR R1, =a            
     LDR R2, =b 
