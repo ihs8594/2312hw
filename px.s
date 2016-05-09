@@ -70,27 +70,30 @@ _sortAscending:
 
 
 _readloop:
-    CMP R0, #10            
+    CMP R0, #10
+    MOVEQ R1, R9
+    BLEQ _printfmin
+    MOVEQ R1, R3
     BEQ readdone          
     LDR R1, =a    
     LSL R2, R0, #2          
     ADD R2, R1, R2          
     LDR R1, [R2]  
+    
     LDR R3, =b 
     LSL R10, R0, #2 
     ADD R10, R3, R10 
     LDR R3, [R10]
+    CMP R0, #0
+    MOVEQ R9, R3
     PUSH {R0}              
     PUSH {R1}             
-    PUSH {R2}             
-    PUSH {R3} 
+    PUSH {R2}
     PUSH {R10} 
-    MOV R1, R3
     MOV R2, R1     
-    MOV R3, R0        
+    MOV R1, R0        
     BL  _printf           
     POP {R10} 
-    POP {R3}
     POP {R2}              
     POP {R1}               
     POP {R0}                
@@ -104,7 +107,19 @@ _printf:
     PUSH {LR}              
     LDR R0, =printf_str    
     BL printf               
-    POP {PC}              
+    POP {PC}
+
+_printfmin:
+    PUSH {LR}              
+    LDR R0, =printf_min    
+    BL printf               
+    POP {PC}
+    
+_printfmax:
+    PUSH {LR}              
+    LDR R0, =printf_max    
+    BL printf               
+    POP {PC}
 
 _scanf:
     PUSH {LR}             
@@ -142,4 +157,7 @@ b:        .skip       40
 format_str:     .asciz      "%d"
 prompt_str:     .asciz      "Type in 10 integers:"
 printf_str:     .asciz      "array_a[%d] = %d, array_b = %d\n "
+printf_max:     .asciz      "maximum = %d\n "
+printf_min:     .asciz      "minimum = %d\n "
+printf_sum:     .asciz      "sum = %d\n "
 exit_str:       .ascii      "Terminating program.\n"
