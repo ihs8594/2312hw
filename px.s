@@ -168,6 +168,6 @@ _exit:
 a:        .skip       40
 b:        .skip       40
 format_str:     .asciz      "%d"
-prompt_str:     .asciz      "Type in 10 positive integers:"
+prompt_str:     .asciz      "Type in 10 integers: "
 printf_str:     .asciz      "array_a[%d] = %d, array_b = %d\n "
 exit_str:       .ascii      "Terminating program.\n"
