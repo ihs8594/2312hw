@@ -43,7 +43,7 @@ main:
     MOV R4, R0           
     MOV R0, #0             
     BL _generate
-    BL writedone
+    B writedone
     
 _generate:
          
