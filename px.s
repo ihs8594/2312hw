@@ -73,7 +73,7 @@ _readloop:
     CMP R0, #10
     MOVEQ R1, R9
     BLEQ _printfmin
-    MOVEQ R1, R3
+    MOVEQ R1, R12
     BLEQ _printfmax
     MOVEQ R1, R11
     BLEQ _printfsum
@@ -89,8 +89,7 @@ _readloop:
     LDR R3, [R10]
     CMP R0, #0
     MOVEQ R9, R3
-    CMP R0, #9
-    MOVEQ R12, R3
+    
     PUSH {R0}              
     PUSH {R1}             
     PUSH {R2}             
@@ -105,7 +104,9 @@ _readloop:
     POP {R2}              
     POP {R1}               
     POP {R0}                 
-    ADD R0, R0, #1        
+    ADD R0, R0, #1 
+    CMP R0, #10
+    MOVEQ R12, R3
     B   _readloop
 
 readdone:
