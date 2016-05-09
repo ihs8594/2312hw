@@ -95,14 +95,10 @@ _readloop:
     PUSH {R0}              
     PUSH {R1}             
     PUSH {R2}             
-    PUSH {R3} 
-    PUSH {R10} 
-    MOV R3, R3
+    
     MOV R2, R1     
     MOV R1, R0        
-    BL  _printf           
-    POP {R10} 
-    POP {R3}
+    BL  _printf
     POP {R2}              
     POP {R1}               
     POP {R0}                 
@@ -173,7 +169,7 @@ a:        .skip       40
 b:        .skip       40
 format_str:     .asciz      "%d"
 prompt_str:     .asciz      "Type in 10 integers:"
-printf_str:     .asciz      "array_a[%d] = %d, array_b = %d\n "
+printf_str:     .asciz      "array_a[%d] = %d"
 printf_max:     .asciz      "maximum = %d\n "
 printf_min:     .asciz      "minimum = %d\n "
 printf_sum:     .asciz      "sum = %d\n "
