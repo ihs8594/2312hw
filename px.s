@@ -11,8 +11,7 @@ main:
 _generate:
     BL _scanf
     MOV R4, R0
-    CMP R8, #9
-    BEQ writedone
+    
     LDR R1, =a            
     LDR R2, =b 
     LSL R3, R8, #2     
@@ -25,7 +24,8 @@ _generate:
     STR R7, [R5]
     
     ADD R8, R8, #1
-
+    CMP R8, #9
+    BEQ writedone
     
     B _generate
    
